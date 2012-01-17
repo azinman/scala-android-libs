@@ -29,46 +29,26 @@ Usage
 To use the Scala library in one of your projects, add the following lines inside of the `<application>`-tag in the
 `AndroidManifest.xml`:
 
-        <uses-library android:name="scala.library" android:required="true"/>
-        <uses-library android:name="scala.collection" android:required="true"/>
-        <uses-library android:name="scala.collection.mutable" android:required="true"/>
-        <uses-library android:name="scala.collection.immutable" android:required="true"/>
-        <uses-library android:name="scala.collection.parallel" android:required="true"/>
+        <uses-library android:name="scala_actors-2.9.1"/>
+        <uses-library android:name="scala_collection-2.9.1"/>
+        <uses-library android:name="scala_immutable-2.9.1"/>
+        <uses-library android:name="scala_library-2.9.1"/>
+        <uses-library android:name="scala_mutable-2.9.1"/>
 
-If you use sbt with the [sbt-android plugin][sbt-android] plugin you now have to exclude the scala-library.jar from
-proguard. The plugin right now has no option to exclude only the Scala library but in the meantime you can override the
-proguard setting from the plugin by include this into your project definition:
+If you use sbt with the [sbt-android plugin][sbt-android] plugin you will now want to disable the ProGuard step. This
+will speed up the build time and also prevent the plugin from packaging the Scala library with your application.
 
-      import proguard.{Configuration=>ProGuardConfiguration, ProGuard, ConfigurationParser}
-      trait ProguardWithoutScala extends AndroidProject {
-        import java.io._
+In your build.scala file, you'll want something like this (you should already have a Project defined, just edit it)
 
-        override def proguardTask = task {
-          val args = "-injars" :: mainCompilePath.absolutePath+//File.pathSeparator+
-                                   //scalaLibraryJar.getAbsolutePath+"(!META-INF/MANIFEST.MF,!library.properties)"+
-                                   (if (!proguardInJars.getPaths.isEmpty) File.pathSeparator+proguardInJars.getPaths.map(_+"(!META-INF/MANIFEST.MF)").mkString(File.pathSeparator) else "") ::
-                     "-outjars" :: classesMinJarPath.absolutePath ::
-                     "-libraryjars" :: libraryJarPath.getPaths.mkString(File.pathSeparator) ::
-                     "-dontwarn" :: "-dontoptimize" :: "-dontobfuscate" ::
-                     "-keep public class * extends android.app.Activity" ::
-                     "-keep public class * extends android.app.Service" ::
-                     "-keep public class * extends android.appwidget.AppWidgetProvider" ::
-                     "-keep public class * extends android.content.BroadcastReceiver" ::
-                     "-keep public class * extends android.content.ContentProvider" ::
-                     "-keep public class * extends android.view.View" ::
-                     "-keep public class * extends android.app.Application" ::
-                     "-keep public class "+manifestPackage+".** { public protected *; }" ::
-                     "-keep public class * implements junit.framework.Test { public void test*(); }" :: proguardOption :: Nil
+    lazy val main = Project (
+      "My Android App",
+      file("."),
+      settings = General.fullAndroidSettings ++ Seq(
+        useProguard in Android := false
+      )
+    )
 
-          val config = new ProGuardConfiguration
-          new ConfigurationParser(args.toArray[String], info.projectPath.asFile).parse(config)
-          new ProGuard(config).execute
-          None
-        }
-      }
-
-and extend your project from `ProguardWithoutScala` (or you put the proguardTask method directly into your project class).
-
+You can re-enable the ProGuard step whenever you're ready to build an APK for publishing.
 
 What this is not
 ----------------
@@ -90,6 +70,12 @@ Unfortunately, this method doesn't work right now on an emulator for several rea
 
   - The emulator image doesn't give su-rights to any app
   - The emulator /system image is basically read-only and is rebuild on every restart of the emulator
+
+
+Android Market
+-------------
+
+You can find this application on the Android Market [here](https://market.android.com/details?id=com.mobilemagic.scalainstaller)
 
 
 If it doesn't work
