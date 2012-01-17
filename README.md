@@ -97,11 +97,20 @@ If it doesn't work
 
 [Please file a bug][issues] or tell me in [github][gh-mail] or at johannes.rudolph@gmail.com.
 
+License
+-------
+
+The library is licensed under the FreeBSD License.
+
 Credits
 -------
 
 [Stephane Micheloud][micheloud] already did much work on how to prepare an emulator image or a rooted phone to have Scala installed.
 The process involved creating dex'd versions of the Scala library, a new image and adapting shell scripts.
+
+@macarse updated the libraries to Scala 2.9.1 and fixed some bugs with the command line tools.
+
+@jbrechtel converted the complete app to Scala and made it ready to be published on the Android market.
 
   [apk]:         https://github.com/downloads/jrudolph/scala-android-libs/scala-android-libs_2.9.0-1-2.9.0-1.v1.apk
   [desc]:        http://github.com/jrudolph/scala-android-libs/blob/master/src/main/res/raw/scala_collection_desc.xml
