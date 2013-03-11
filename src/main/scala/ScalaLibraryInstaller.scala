@@ -29,16 +29,8 @@ object ScalaLibraryInstaller {
   }
 
   final val TAG: String = "ScalaLibInst"
-  val resources = Array(R.raw.scala_actors_291,
-                        R.raw.scala_actors_291_desc,
-                        R.raw.scala_collection_291,
-                        R.raw.scala_collection_291_desc,
-                        R.raw.scala_immutable_291,
-                        R.raw.scala_immutable_291_desc,
-                        R.raw.scala_library_291,
-                        R.raw.scala_library_291_desc,
-                        R.raw.scala_mutable_291,
-                        R.raw.scala_mutable_291_desc)
+  val resources = Array(R.raw.scala_library_2_10_1_rc3,
+                        R.raw.scala_library_2_10_1_rc3_desc)
 
   val runtime: Runtime = Runtime.getRuntime
 }

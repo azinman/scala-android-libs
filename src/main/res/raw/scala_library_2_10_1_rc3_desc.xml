@@ -1,0 +1,4 @@
+<permissions>
+  <library name="scala_library-2.10.1-RC3"
+    file="/data/data/com.mobilemagic.scalainstaller/files/scala_library_2_10_1_rc3.jar"/>
+</permissions>

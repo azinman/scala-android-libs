@@ -29,11 +29,7 @@ Usage
 To use the Scala library in one of your projects, add the following lines inside of the `<application>`-tag in the
 `AndroidManifest.xml`:
 
-        <uses-library android:name="scala_actors-2.9.1"/>
-        <uses-library android:name="scala_collection-2.9.1"/>
-        <uses-library android:name="scala_immutable-2.9.1"/>
-        <uses-library android:name="scala_library-2.9.1"/>
-        <uses-library android:name="scala_mutable-2.9.1"/>
+        <uses-library android:name="scala_library-2.10.1-RC3"/>
 
 If you use sbt with the [sbt-android plugin][sbt-android] plugin you will now want to disable the ProGuard step. This
 will speed up the build time and also prevent the plugin from packaging the Scala library with your application.

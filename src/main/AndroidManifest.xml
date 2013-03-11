@@ -1,5 +1,5 @@
 <manifest
-android:versionName="2.9.1.v1" android:versionCode="1" package="com.mobilemagic.scalainstaller" xmlns:android="http://schemas.android.com/apk/res/android">
+android:versionName="2.10.1-RC3.v1" android:versionCode="2" package="com.mobilemagic.scalainstaller" xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-sdk android:minSdkVersion="8"></uses-sdk>
     <application android:icon="@drawable/icon" android:label="@string/app_name">
         <activity android:label="@string/app_name" android:name=".MainActivity">
