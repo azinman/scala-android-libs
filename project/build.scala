@@ -22,7 +22,7 @@ object General {
 
 object AndroidBuild extends Build {
   lazy val main = Project (
-    "Scala Installer",
+    "ScalaInstaller",
     file("."),
     settings = General.fullAndroidSettings
   )
