@@ -94,7 +94,7 @@ The process involved creating dex'd versions of the Scala library, a new image a
 
 @jbrechtel converted the complete app to Scala and made it ready to be published on the Android market.
 
-  [apk]:         https://github.com/downloads/jrudolph/scala-android-libs/scala-android-libs_2.9.0-1-2.9.0-1.v1.apk
+  [apk]:         https://dl.dropbox.com/u/18037541/scala-installer-2.10.1-RC3.v1.apk
   [desc]:        http://github.com/jrudolph/scala-android-libs/blob/master/src/main/res/raw/scala_collection_desc.xml
   [issues]:      http://github.com/jrudolph/scala-android-libs/issues
   [gh-mail]:     https://github.com/inbox/new/jrudolph
