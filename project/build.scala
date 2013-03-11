@@ -8,7 +8,8 @@ object General {
     name := "Scala Installer",
     version := "0.1",
     scalaVersion := "2.9.1",
-    platformName in Android := "android-8"
+    platformName in Android := "android-8",
+    javacOptions in compile ++= Seq("-target", "1.6", "-source", "1.6")
   )
 
   lazy val fullAndroidSettings =
